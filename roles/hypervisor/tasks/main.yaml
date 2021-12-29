@@ -1,0 +1,15 @@
+---
+- name: Install needed packages for Ubuntu 20.04 to be a hypervisor
+  apt:
+    pkg: "{{ ubuntu_2004lts_pkgs }}"
+
+- name: remove contents of /etc/netplan/
+  shell: /bin/rm -rf /etc/netplan/*
+
+- name: update netplan file
+  ansible.builtin.template:
+    src: templates/netplan_static-ip_bridge.yaml.j2
+    dest: /etc/netplan/static-bridge.yaml
+    owner: root
+    group: root
+    mode: '0644'

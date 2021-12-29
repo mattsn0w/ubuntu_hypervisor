@@ -1,0 +1,16 @@
+# This is the network config generated via ansible playbook jinja2 template
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    {{ ethernet_if_one }}:
+      addresses:
+        - {{ static_ip }}/{{ netbitmask }}
+      nameservers:
+        search: [{{ dns_search_domain_one }}, {{ dns_search_domain_two }} ]
+        addresses: [{{ dns_ip_one }}, {{ dns_ip_two }}]
+      gateway4: {{ default_gateway }}
+
+    {{ ethernet_if_two }}:
+      dhcp4: false
+      dhcp6: false

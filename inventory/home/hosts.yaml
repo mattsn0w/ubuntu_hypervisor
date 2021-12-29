@@ -1,0 +1,28 @@
+all:
+  hosts:
+  children:
+    hypervisors:
+      hosts:
+        brick.co.slakin.net:
+          ethernet_if_one: enp3s0
+          ethernet_if_two: enp4s0
+          static_ip: 172.16.1.49
+        brick2.co.slakin.net:
+          ethernet_if_one: eno1
+          ethernet_if_two: eno2
+    virtualmachines:
+      hosts:
+        legvm01.co.slakin.net:
+        legvm02.co.slakin.net:
+        legvm03.co.slakin.net:
+        armvm01.co.slakin.net:
+        armvm02.co.slakin.net:
+        armvm03.co.slakin.net:
+  vars:
+    netbitmask: 24
+    default_gateway: 172.16.1.254
+    dns_search_domain_one: co.slakin.net
+    dns_search_domain_two: co.mattsn0w.com
+    dns_ip_one: 172.16.1.53
+    dns_ip_two: 172.16.1.81
+

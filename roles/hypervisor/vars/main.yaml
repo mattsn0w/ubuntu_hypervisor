@@ -1,0 +1,18 @@
+---
+ubuntu_2004lts_pkgs:
+  - python3.8-venv
+  - net-tools
+  - sysstat
+  - cloud-utils
+  - cpu-checker
+  - libguestfs-tools
+  - libosinfo-bin
+  - libvirt-clients
+  - libvirt-daemon
+  - libvirt-daemon-system
+  - net-tools
+  - network-manager
+  - qemu-kvm
+  - virtinst
+  - virt-manager
+
