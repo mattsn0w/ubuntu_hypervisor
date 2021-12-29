@@ -15,4 +15,4 @@ ubuntu_2004lts_pkgs:
   - qemu-kvm
   - virtinst
   - virt-manager
-
+  - xsltproc
