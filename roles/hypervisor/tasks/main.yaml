@@ -26,3 +26,26 @@
   ansible.builtin.systemd:
     name: libvirtd.service
     state: restarted
+
+- name: Create /opt/bin
+  ansible.builtin.file:
+    path: /opt/bin
+    state: directory
+    owner: root
+    group: root
+
+
+- name: Download terraform binary
+  get_url:
+    url: https://releases.hashicorp.com/terraform/1.1.2/terraform_1.1.2_linux_amd64.zip
+    dest: /opt/bin/terraform_1.1.2_linux_amd64.zip
+    owner: root
+    group: root
+
+- name: extract terraform zip file
+  ansible.builtin.unarchive:
+    src: /opt/bin/terraform_1.1.2_linux_amd64.zip
+    dest: /opt/bin/
+    owner: root
+    group: root
+    mode: 0755
