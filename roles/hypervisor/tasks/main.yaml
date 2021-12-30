@@ -13,3 +13,16 @@
     owner: root
     group: root
     mode: '0644'
+
+# https://github.com/dmacvicar/terraform-provider-libvirt/commit/22f096d9
+- name: Disable SELinux enforcement in qemu.conf
+  ansible.builtin.lineinfile:
+    path: /etc/libvirt/qemu.conf
+    regexp: '^security_driver = "none"$'
+    insertafter: '^#security_driver = "selinux"$'
+    line: security_driver = "none"
+
+- name: restart libvirtd to ensure it does not self influct selinux
+  ansible.builtin.systemd:
+    name: libvirtd.service
+    state: restarted
