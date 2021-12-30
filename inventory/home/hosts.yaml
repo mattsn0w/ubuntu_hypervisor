@@ -10,6 +10,7 @@ all:
         brick2.co.slakin.net:
           ethernet_if_one: eno1
           ethernet_if_two: eno2
+          static_ip: 172.16.1.60
     virtualmachines:
       hosts:
         legvm1.co.slakin.net:

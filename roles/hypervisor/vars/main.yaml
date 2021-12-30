@@ -16,3 +16,4 @@ ubuntu_2004lts_pkgs:
   - virtinst
   - virt-manager
   - xsltproc
+  - unzip
