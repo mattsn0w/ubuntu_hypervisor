@@ -11,11 +11,19 @@ all:
           ethernet_if_one: eno1
           ethernet_if_two: eno2
           static_ip: 172.16.1.60
+        brick3.co.slakin.net:
+          ethernet_if_one: eno1
+          ethernet_if_two: eno2
+          static_ip: 172.16.1.67
     virtualmachines:
       hosts:
         legvm1.co.slakin.net:
         legvm2.co.slakin.net:
         legvm3.co.slakin.net:
+        legvm4.co.slakin.net:
+        legvm5.co.slakin.net:
+        legvm6.co.slakin.net:
+        legvm7.co.slakin.net:
         armvm01.co.slakin.net:
         armvm02.co.slakin.net:
         armvm03.co.slakin.net:

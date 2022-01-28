@@ -19,7 +19,8 @@
   get_url:
     url: https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img
     #checksum: sha256:https://cloud-images.ubuntu.com/releases/focal/release/SHA256SUMS
-    checksum: sha256:27cecebaf8c6334c56b66bf4759f9b001a35720323e1870a463a6f409229ff92
+    #checksum: sha256:27cecebaf8c6334c56b66bf4759f9b001a35720323e1870a463a6f409229ff92
+    checksum: sha256:e1264d4cca6c6c537e92f4e676cdc3cddbc5d7fe627d1d439d7e6973ebc2e216
     dest: /var/lib/libvirt/terraform/base_images/ubuntu-20.04-server-cloudimg-amd64.img
     owner: root
     group: kvm
