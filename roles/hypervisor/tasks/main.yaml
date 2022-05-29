@@ -27,25 +27,35 @@
     name: libvirtd.service
     state: restarted
 
-- name: Create /opt/bin
-  ansible.builtin.file:
-    path: /opt/bin
-    state: directory
+- name: copy systemd config to host
+  ansible.builtin.template:
+    src: templates/start-vm-domains.service
+    dest: /etc/systemd/system/start-vm-domains.service
     owner: root
     group: root
+    mode: '0644'
 
-
-- name: Download terraform binary
-  get_url:
-    url: https://releases.hashicorp.com/terraform/1.1.2/terraform_1.1.2_linux_amd64.zip
-    dest: /opt/bin/terraform_1.1.2_linux_amd64.zip
+- name: Copy VM startup script for systemd
+  ansible.builtin.template:
+    src: templates/start-vms-that-are-shut-off.sh
+    dest: /usr/local/bin/start-vms-that-are-shut-off.sh
     owner: root
     group: root
+    mode: '0755'
 
-- name: extract terraform zip file
-  ansible.builtin.unarchive:
-    src: /opt/bin/terraform_1.1.2_linux_amd64.zip
-    dest: /opt/bin/
-    owner: root
-    group: root
-    mode: 0755
+- name: Reload systemd configurations
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: enable start-vm-domains.service
+  ansible.builtin.systemd:
+    name: start-vm-domains.service
+    enabled: yes
+
+- name: enable start-vm-domains.service
+  ansible.builtin.systemd:
+    name: start-vm-domains.service
+    state: started
+    no_block: yes
+
+

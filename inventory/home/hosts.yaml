@@ -33,5 +33,5 @@ all:
     dns_search_domain_one: co.slakin.net
     dns_search_domain_two: co.mattsn0w.com
     dns_ip_one: 172.16.1.53
-    dns_ip_two: 172.16.1.81
+    dns_ip_two: 172.16.1.27
 
