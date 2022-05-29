@@ -11,11 +11,18 @@ If you're starting from scratch you will need to run the role from a host with a
 
 
 ### Limiting to the current bootstrapp(ing|ed) host.
-Now run the playbook:  
+Now run the playbook.
 ```
+# As root. This is bad. dont do it!
 root@nuc:~/ubuntu_hv_bootstrap# ansible-playbook \
     -i inventory/home/hosts.yaml \
     --limit=brick.co.slakin.net \
     --connection=local  hypervisor.yaml  
-```
 
+# As a user with become
+msnow@stumpy:~/ansible $ ansible-playbook \
+    -i inventory/hosts.yaml \
+    --limit=brick6.co.slakin.net \
+    --become  --ask-become-pass hypervisor.yaml
+
+```
