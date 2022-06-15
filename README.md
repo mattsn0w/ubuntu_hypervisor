@@ -1,6 +1,5 @@
 # Bootstraping an Ubuntu 20.04.x HyperVisor
 
-
 ## which came first - Chicken or the egg?
 Ths role is meant to bootstrap a freshly installed vanilla Ubuntu 20.04.3 server
 
@@ -14,15 +13,26 @@ If you're starting from scratch you will need to run the role from a host with a
 Now run the playbook.
 ```
 # As root. This is bad. dont do it!
-root@nuc:~/ubuntu_hv_bootstrap# ansible-playbook \
+ # ansible-playbook \
     -i inventory/home/hosts.yaml \
     --limit=brick.co.slakin.net \
     --connection=local  hypervisor.yaml  
 
 # As a user with become
-msnow@stumpy:~/ansible $ ansible-playbook \
+$ ansible-playbook \
     -i inventory/hosts.yaml \
     --limit=brick6.co.slakin.net \
-    --become  --ask-become-pass hypervisor.yaml
+    --become --ask-become-pass \
+    hypervisor.yaml
 
 ```
+
+### Fix for VMs not starting at host boot time.
+```
+ansible-playbook -i /tanker/ansible/bare_metal_hosts/inventory/hosts.yaml \
+  --limit=brick3.co.slakin.net \
+  --become --ask-become-pass \
+  --tags systemd \
+  hypervisor.yaml
+```
+

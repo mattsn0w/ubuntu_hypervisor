@@ -34,6 +34,7 @@
     owner: root
     group: root
     mode: '0644'
+  tags: systemd
 
 - name: Copy VM startup script for systemd
   ansible.builtin.template:
@@ -42,20 +43,24 @@
     owner: root
     group: root
     mode: '0755'
+  tags: systemd
 
 - name: Reload systemd configurations
   ansible.builtin.systemd:
     daemon_reload: yes
+  tags: systemd
 
 - name: enable start-vm-domains.service
   ansible.builtin.systemd:
     name: start-vm-domains.service
     enabled: yes
+  tags: systemd
 
 - name: enable start-vm-domains.service
   ansible.builtin.systemd:
     name: start-vm-domains.service
     state: started
     no_block: yes
+  tags: systemd
 
 
